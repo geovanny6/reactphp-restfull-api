@@ -12,6 +12,7 @@ use FastRoute\DataGenerator\GroupCountBased;
 use FastRoute\Dispatcher;
 use App\Core\Router;
 use \App\Core\ErrorHandler;
+use \App\Core\JsonRequestDecoder;
 use App\Productos\Controller\GetAllProductos;
 use App\Productos\Controller\CreateProducto;
 use App\Productos\Controller\GetProductoById;
@@ -41,7 +42,7 @@ $routes->put('/ordenes/{id:\d+}',new UpdateOrden());
 $routes->delete('/ordenes/{id:\d+}',new DeleteOrden());
  
 
-$server = new Server($loop,new ErrorHandler(),new Router($routes));
+$server = new Server($loop,new ErrorHandler(),new JsonRequestDecoder(),new Router($routes));
 // $server = new Server($loop,[new ErrorHandler(),new Router($routes)]);
 $socket = new React\Socket\Server('127.0.0.1:1313',$loop);
 // $socket = new React\Socket\Server('127.0.0.1:1313',$loop);

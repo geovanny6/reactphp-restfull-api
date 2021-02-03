@@ -12,7 +12,7 @@ final class ErrorHandler{
         }
         catch(\Throwable $e)
         {
-         return JsonResponse::internalServerError($e->getMessage(),$e->getCode());
+            return JsonResponse::internalServerError($e->getMessage(),$e->getCode());
         }
 
     }
